@@ -19,7 +19,34 @@ namespace RestApiAutomation
 
             Data queryResult = client.Execute<Data>(request).Data;
 
-            Console.WriteLine(queryResult.ToString());
+            Assert.That(queryResult.id.Equals(1));
+            Assert.That(queryResult.title.Equals("delectus aut autem"));
+
+            Console.WriteLine(queryResult.title);
         }
+
+        [Test]
+        public void GetResource2()
+        {
+            Data myData = new Data();
+            myData.id = 43;
+            myData.userId = 2;
+            myData.title = "abc";
+            myData.completed = true;
+
+            string url = String.Format("{0}/posts/1", _baseUrl);
+            RestClient client = new RestClient();
+            RestRequest request = new RestRequest(url, Method.PUT);
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Accept", "application/json");
+            request.AddBody(myData);
+
+            Data queryResult = client.Execute<Data>(request).Data;
+
+            Assert.That(queryResult.id.Equals(43));
+
+            Console.WriteLine(queryResult.id);
+        }
+
     }
 }
