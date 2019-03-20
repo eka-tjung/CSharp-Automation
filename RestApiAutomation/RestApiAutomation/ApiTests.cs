@@ -43,7 +43,7 @@ namespace RestApiAutomation
 
             Data queryResult = client.Execute<Data>(request).Data;
 
-            //Assert.That(queryResult.id.Equals(43));
+            ////Assert.That(queryResult.id.Equals(43));
 
             Console.WriteLine(queryResult.id);
         }
