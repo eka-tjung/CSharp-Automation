@@ -21,5 +21,36 @@ namespace RestApiAutomation
 
             Console.WriteLine(queryResult.ToString());
         }
+
+        [Test]
+        public void PostResource()
+        {
+            Data toPost = new Data();
+            toPost.id = 43;
+            toPost.userId = 34;
+            toPost.title = "Test";
+            toPost.completed = true;
+
+            string url = String.Format("{0}posts", _baseUrl);
+            RestClient client = new RestClient();
+            RestRequest request = new RestRequest(url, Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Accept", "application/json");
+            request.AddBody(toPost);
+/*            request.AddBody(new {
+                id = 43,
+                userId = 34,
+                title = "Test",
+                completed = true
+            });
+*/
+            Data queryResult = client.Execute<Data>(request).Data;
+
+            Assert.AreEqual(101, queryResult.id);
+            Assert.AreEqual(34, queryResult.userId);
+            Assert.AreEqual("Test", queryResult.title);
+            Assert.AreEqual(true, queryResult.completed);
+        }
+
     }
 }
