@@ -1,0 +1,8 @@
+ContosoUniversity/bin/*
+ContosoUniversity/obj/*
+CUManager/bin/*
+CUManager/obj/*
+CUTests/bin/*
+CUTests/obj/*
+TestResults/*
+*.suo

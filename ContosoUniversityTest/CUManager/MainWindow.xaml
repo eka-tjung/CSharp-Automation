@@ -1,0 +1,27 @@
+﻿<Window x:Class="CUManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Contoso University Manager" Height="400" Width="250" Loaded="Window_Loaded_1">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="10">
+            <Label Content="Teacher Name: "/>
+            <ComboBox x:Name="teacherList" SelectionChanged="teacherList_SelectionChanged" />
+            <Label Content="Registered Courses: "/>
+            <ComboBox x:Name="courseList" SelectionChanged="courseList_SelectionChanged" />
+            <Label Content="Registered Students: "/>
+            <ComboBox x:Name="studentList" SelectionChanged="studentList_SelectionChanged" />
+            <Label Content="Grade: "/>
+            <TextBox x:Name="studentGrade"/>
+            <Button x:Name="btnUpdateGrade" Content="Update Student Grade" Click="btnUpdateGrade_Click" Margin="0 10 0 0"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <Label x:Name="logBox" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
